@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 4158884414731677765}
   m_Layer: 9
   m_Name: ground (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4842137359153514859
 Transform:
@@ -109,10 +109,10 @@ GameObject:
   - component: {fileID: 4824121347671754853}
   m_Layer: 9
   m_Name: ground
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1040993087931345146
 Transform:
@@ -243,9 +243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea72c47fbae79f4aa286c8adbe8caa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsed: 0
   lifeTime: 1000
   variationsType: 0
   levelTurn: {fileID: 9191378662576405061}
+  leveWidthSize: 0
+  offset: {x: 0, y: 0, z: 0}
   newObstacleSpawnPointArray:
   - {fileID: 6628891918231205631}
   playerSpawnPointRight: {fileID: 0}
@@ -420,10 +423,10 @@ GameObject:
   - component: {fileID: 2632402980513075947}
   m_Layer: 9
   m_Name: ground (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2191741294683138777
 Transform:
@@ -512,7 +515,6 @@ GameObject:
   - component: {fileID: 6248237777617539073}
   - component: {fileID: 7337741385067558506}
   - component: {fileID: 4713657555962955622}
-  - component: {fileID: 8805468711664711465}
   m_Layer: 0
   m_Name: plane
   m_TagString: Untagged
@@ -528,8 +530,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6086850087431813906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.2, z: 37.5}
-  m_LocalScale: {x: 10.016548, y: 0.48156482, z: 8.860792}
+  m_LocalPosition: {x: 0, y: -1.2, z: 40.8198}
+  m_LocalScale: {x: 10.016548, y: 0.48156482, z: 8.197119}
   m_Children: []
   m_Father: {fileID: 5569642022658696804}
   m_RootOrder: 8
@@ -583,20 +585,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8805468711664711465
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6086850087431813906}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7947936597907062335
 GameObject:
   m_ObjectHideFlags: 0

@@ -1003,6 +1003,8 @@ MonoBehaviour:
   lifeTime: 10000
   variationsType: 0
   levelTurn: {fileID: 2785604343846221337}
+  leveWidthSize: 11.6
+  offset: {x: 0, y: 1.53, z: 0}
   newObstacleSpawnPointArray:
   - {fileID: 917111548199560335}
   playerSpawnPointRight: {fileID: 0}
@@ -1853,6 +1855,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848660643427497689, guid: 76ebde32b6f6eb54385ec49f800cbddb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697057770529122297, guid: 76ebde32b6f6eb54385ec49f800cbddb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6728853800067776858, guid: 76ebde32b6f6eb54385ec49f800cbddb, type: 3}

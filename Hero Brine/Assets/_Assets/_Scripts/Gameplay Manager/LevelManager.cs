@@ -1,5 +1,6 @@
 using UnityEngine;
 using GamerWolf.Utils;
+using System.Collections;
 using System.Collections.Generic;
 namespace HeroBrine {
     public class LevelManager : MonoBehaviour{
@@ -21,10 +22,11 @@ namespace HeroBrine {
         private void Start(){
             previouslySpawnedVariationsList = new List<LevelVariations>();
             playerController.OnPlayerTurn += (object sender,System.EventArgs e) => {
-                for (int i = 0; i < previouslySpawnedVariationsList.Count; i++){
+                for (int i = 0; i < previouslySpawnedVariationsList.Count -1; i++){
                     previouslySpawnedVariationsList[i].DestroyWithOutDelay();
                 }
                 previouslySpawnedVariationsList = new List<LevelVariations>();
+                SpawnNumberOfStraightRoad(5);
             };
             Invoke(nameof(SpawnInitialSegment),0.1f);
         }
@@ -33,8 +35,8 @@ namespace HeroBrine {
             LevelVariations Obstaclelevel = levelObject.GetComponent<LevelVariations>();
             if(Obstaclelevel != null){
                 newVariations = Obstaclelevel;
-                previouslySpawnedVariationsList.Add(newVariations);
             }
+            StartCoroutine(AddLevel(newVariations));
             
             SpawnNumberOfStraightRoad(4);
         }
@@ -70,8 +72,15 @@ namespace HeroBrine {
                 newVariations = Obstaclelevel;
 
             }
+            StartCoroutine(AddLevel(newVariations));
+        }
+        private IEnumerator AddLevel(LevelVariations level){
+            yield return new WaitForSeconds(0.1f);
             if(newVariations != null){
-                previouslySpawnedVariationsList.Add(newVariations);
+                if(!previouslySpawnedVariationsList.Contains(level)){
+                    previouslySpawnedVariationsList.Add(level);
+
+                }
             }
         }
         private void SpawnRightTurnRoad(){
@@ -87,9 +96,7 @@ namespace HeroBrine {
                 LevelVariations Obstaclelevel = levelObject.GetComponent<LevelVariations>();
                 newVariations = Obstaclelevel;
             }
-            if(newVariations != null){
-                previouslySpawnedVariationsList.Add(newVariations);
-            }
+            StartCoroutine(AddLevel(newVariations));
         }
         private void SpawnLeftTurnRoad(){
             if(newVariations.GetLevelTurn().GetTurnType() == TurnType.T_Section){
@@ -104,18 +111,14 @@ namespace HeroBrine {
                 LevelVariations Obstaclelevel = levelObject.GetComponent<LevelVariations>();
                 newVariations = Obstaclelevel;
             }
-            if(newVariations != null){
-                previouslySpawnedVariationsList.Add(newVariations);
-            }
+            StartCoroutine(AddLevel(newVariations));
 
         }
         private void SpawnT_Section(){
             GameObject levelObject = poolingManager.SpawnFromPool(PoolObjectTag.T_Section,newVariations.GetNewObstacleSpawnPoint().position,newVariations.GetNewObstacleSpawnPoint().rotation);
             LevelVariations Obstaclelevel = levelObject.GetComponent<LevelVariations>();
             newVariations = Obstaclelevel;
-            if(newVariations != null){
-                previouslySpawnedVariationsList.Add(newVariations);
-            }
+            StartCoroutine(AddLevel(newVariations));
         }
         
 

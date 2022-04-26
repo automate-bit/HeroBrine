@@ -65,7 +65,7 @@ namespace HeroBrine {
                 playerController.SetCurrentTurn(null);
                 if(coli.TryGetComponent<LevelTurn>(out LevelTurn turn)){
                     if(turn.GetTurnType() != TurnType.Strainght){
-                        LevelManager.current.SpawnNumberOfStraightRoad(5);
+                        // LevelManager.current.SpawnNumberOfStraightRoad(5);
                     }
                 }
                 LevelManager.current.OnSegmentCrossed();

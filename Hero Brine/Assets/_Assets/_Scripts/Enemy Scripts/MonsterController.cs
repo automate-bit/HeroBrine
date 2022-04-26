@@ -21,6 +21,7 @@ namespace HeroBrine{
         private float currentYrot;
         private float rotaionSmoothTime;
         private float currentScreenTime;
+        private bool alreadyCaughtPlayer;
         private void Start(){
             currentScreenTime = onScreenTimerMax;
             playerController.OnPlayerBump += PlayerBumpEvent;
@@ -36,10 +37,9 @@ namespace HeroBrine{
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x,currentYrot,transform.eulerAngles.z);
             }
         }
-        private bool alreadyCathPlayer;
         private void Update(){
             if(!catchPlayer){
-                alreadyCathPlayer = false;
+                alreadyCaughtPlayer = false;
                 monsterAnimationHandler.StartMove(true);
                 if(moveCloseBy){
                     

@@ -139,10 +139,12 @@ MonoBehaviour:
   lifeTime: 10000
   variationsType: 0
   levelTurn: {fileID: 8250351063292753583}
+  leveWidthSize: 11.6
+  offset: {x: 0, y: 1.53, z: 0}
   newObstacleSpawnPointArray:
   - {fileID: 6371866593164420153}
   playerSpawnPointRight: {fileID: 0}
-  playerSpawnPointLeft: {fileID: 2036494437326898336}
+  playerSpawnPointLeft: {fileID: 8771464217839812367}
   rand: 0
 --- !u!65 &3097460661092026198
 BoxCollider:
@@ -381,7 +383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830886353280532014}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -15.300002, y: 0.7800001, z: 90.9}
+  m_LocalPosition: {x: -12.5, y: 0.7800001, z: 79.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4664079188243049102}

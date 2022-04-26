@@ -120,7 +120,6 @@ GameObject:
   - component: {fileID: 6353939205079251194}
   - component: {fileID: 4304792701730065239}
   - component: {fileID: 4546539943966574604}
-  - component: {fileID: 6609664712445398298}
   m_Layer: 0
   m_Name: plane
   m_TagString: Untagged
@@ -136,8 +135,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3547193122143292005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.2, z: 37.5}
-  m_LocalScale: {x: 10.016548, y: 0.48156482, z: 8.860792}
+  m_LocalPosition: {x: 0, y: -1.2, z: 40.4597}
+  m_LocalScale: {x: 10.016548, y: 0.48156482, z: 8.268891}
   m_Children: []
   m_Father: {fileID: 8240492902913106048}
   m_RootOrder: 10
@@ -191,20 +190,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6609664712445398298
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3547193122143292005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3954092146093094746
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,12 +245,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea72c47fbae79f4aa286c8adbe8caa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsed: 0
   lifeTime: 1000
   variationsType: 0
   levelTurn: {fileID: 4654784097541110945}
+  leveWidthSize: 0
+  offset: {x: 0, y: 0, z: 0}
   newObstacleSpawnPointArray:
   - {fileID: 7271560087767576603}
-  playerSpawnPointRight: {fileID: 3361140024424418990}
+  playerSpawnPointRight: {fileID: 0}
   playerSpawnPointLeft: {fileID: 0}
   rand: 0
 --- !u!65 &1736801634771832152

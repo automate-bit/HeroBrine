@@ -9,10 +9,13 @@ namespace HeroBrine{
     }
     public class LevelVariations : MonoBehaviour,IPooledObject{
 
-        
+        public bool isUsed;
         [SerializeField] private float lifeTime = 30f;
         [SerializeField] private VariationsType variationsType;
         [SerializeField] private LevelTurn levelTurn;
+        [SerializeField] private float leveWidthSize;
+        [SerializeField] private Vector3 offset;
+        // [SerializeField] private Transform levelWidth;
         [SerializeField] private Transform[] newObstacleSpawnPointArray;
         
         [SerializeField] private Transform playerSpawnPointRight,playerSpawnPointLeft;
@@ -33,9 +36,11 @@ namespace HeroBrine{
         }
         public void DestroyWithOutDelay(){
             gameObject.SetActive(false);
+            isUsed = false;
         }
 
         public void OnObjectReuse(){
+            isUsed = true;
             rand = Random.Range(0,newObstacleSpawnPointArray.Length);
             DestroyMySelfWithDelay(lifeTime);
         }
@@ -44,6 +49,18 @@ namespace HeroBrine{
         }
         public LevelTurn GetLevelTurn(){
             return levelTurn;
+        }
+        private void OnDrawGizmos(){
+            Gizmos.color = Color.cyan;
+            if(playerSpawnPointLeft != null){
+                Gizmos.DrawRay(playerSpawnPointLeft.position + offset,playerSpawnPointLeft.right * leveWidthSize);
+                Gizmos.DrawRay(playerSpawnPointLeft.position + offset,(playerSpawnPointLeft.right) * -leveWidthSize);
+            }
+
+            if(playerSpawnPointRight != null){
+                Gizmos.DrawRay(playerSpawnPointRight.position + offset,playerSpawnPointRight.right * leveWidthSize);
+                Gizmos.DrawRay(playerSpawnPointRight.position + offset,(playerSpawnPointRight.right) * -leveWidthSize);
+            }
         }
         
         
