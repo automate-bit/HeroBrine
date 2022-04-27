@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 2152361994200920975}
   - component: {fileID: 445654602148951229}
   - component: {fileID: 3846961127356043819}
-  - component: {fileID: 1791239119421121287}
   m_Layer: 0
   m_Name: plane
   m_TagString: Untagged
@@ -166,8 +165,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5914638875669017364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.2, z: 37.5}
-  m_LocalScale: {x: 10.016548, y: 0.48156482, z: 8.860792}
+  m_LocalPosition: {x: 0, y: -1.2, z: 40.7753}
+  m_LocalScale: {x: 10.016548, y: 0.48156482, z: 8.205979}
   m_Children: []
   m_Father: {fileID: 2360845838815497745}
   m_RootOrder: 12
@@ -221,20 +220,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1791239119421121287
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914638875669017364}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7223973577694353867
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,12 +277,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea72c47fbae79f4aa286c8adbe8caa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsed: 0
   lifeTime: 1000
   variationsType: 0
   levelTurn: {fileID: 1298841073478455856}
+  leveWidthSize: 0
+  offset: {x: 0, y: 0, z: 0}
   newObstacleSpawnPointArray:
   - {fileID: 3924518967531970186}
-  playerSpawnPointRight: {fileID: 8951572083467853887}
+  playerSpawnPointRight: {fileID: 0}
   playerSpawnPointLeft: {fileID: 0}
   rand: 0
 --- !u!65 &5369750392435991497
@@ -863,6 +851,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2360845838815497745}
     m_Modifications:
+    - target: {fileID: 1182636406322248339, guid: 702c16ee0ecbf1a469e452b03df83767, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5167173825836761196, guid: 702c16ee0ecbf1a469e452b03df83767, type: 3}
       propertyPath: m_RootOrder
       value: 3

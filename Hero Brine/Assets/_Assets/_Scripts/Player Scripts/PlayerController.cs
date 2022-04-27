@@ -56,19 +56,22 @@ namespace HeroBrine {
             RotateCorrectly(Vector3.zero);
         }
         private void Update(){
+            mover.ApplyGraivity();
             if(enableInputs){
+                Move();
                 mover.ChangeLane();
                 animationController.Slide(mover.GetIsSliding());
                 animationController.SetGroundedValue(mover.IsGrounded());
                 animationController.Jump(mover.GetIsjumping());
+
             }
         }
-        private void FixedUpdate(){
-            if(enableInputs){
-                Move();
-                mover.ApplyGraivity();
-            }
-        }
+        // private void FixedUpdate(){
+        //     if(enableInputs){
+        //         // Move();
+        //         // mover.ApplyGraivity();
+        //     }
+        // }
 
         private void OnGameOverEvent(object sender,EventArgs args){
             animationController.Run(false);
@@ -95,8 +98,8 @@ namespace HeroBrine {
 
                     if(currentHorizontalPositon == HorizontalPosition.Left){
                         
-                        // OnPlayerTurn?.Invoke(this,EventArgs.Empty);
                         Turn90Left();
+                        OnPlayerTurn?.Invoke(this,EventArgs.Empty);
                     }
                 }
 
@@ -143,8 +146,8 @@ namespace HeroBrine {
                     currentTurn.GetTurnType() == TurnType.T_Section){
 
                     if(currentHorizontalPositon == HorizontalPosition.Right){
-                        // OnPlayerTurn?.Invoke(this,EventArgs.Empty);
                         Turn90Right();
+                        OnPlayerTurn?.Invoke(this,EventArgs.Empty);
                     }
                 }
 
@@ -207,7 +210,8 @@ namespace HeroBrine {
                     }
                 }else {
                     if(end.y > first.y){
-                        mover.Jump();
+                        // mover.Jump();
+                        mover.JumpWithController();
 
                         animationController.Run(false);
                     }else{

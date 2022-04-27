@@ -8,10 +8,13 @@ namespace HeroBrine {
         [Header("Movement")]
         [SerializeField] private float moveToPos = -2;
         [SerializeField] private float sideWaysMoveSpeed = 30f,rotationSmoothTime = 3f;
+        
         [Space(20)]
         [Header("Ground Check")]
+        // [SerializeField] private AnimationCurve jumpFallOff;
+        // [SerializeField] private float jumpMultiplier;
         [SerializeField] private float gravity = -9.8f;
-        [SerializeField] private float jumpHeight = 10f;
+        [SerializeField] private float jumpHeight = 120f;
 
         [SerializeField] private float groundcheckRadius = 0.5f;
         [SerializeField] private Vector3 groundCheckOffset;
@@ -19,7 +22,7 @@ namespace HeroBrine {
 
         [Header("Sliding")]
         [SerializeField] private float maxSlideTime = 2;
-        [SerializeField] private CapsuleCollider m_collider;
+        // [SerializeField] private CapsuleCollider m_collider;
         [SerializeField] private Transform bodyGFX;
         [SerializeField] private Vector3 newSlideOffset,newColliderCenterSlideOffset;
         [SerializeField] private float newSlideColliderHeight,newColliderRadius;
@@ -30,7 +33,8 @@ namespace HeroBrine {
         private HorizontalPosition currentHorizontalPositon;
         private float currentX;
         private Vector3 velocity;
-        private Rigidbody rb;
+        // private Rigidbody rb;
+        private CharacterController controller;
         
         private Coroutine SlideRoutine;
         private float newYRot;
@@ -41,13 +45,19 @@ namespace HeroBrine {
         [SerializeField] private bool isMoveing;
         
         private void Awake(){
-            rb = GetComponent<Rigidbody>();
+            // rb = GetComponent<Rigidbody>();
+            controller = GetComponent<CharacterController>();
+        }
+        private void OnValidate(){
+            if(gravity >= -1){
+                gravity = -1f;
+            }
         }
 
         private void Start(){
-            orgignalColiHeight = m_collider.height;
-            orignalColiOffset = m_collider.center;
-            orignalColiRadius = m_collider.radius;
+            orgignalColiHeight = controller.height;
+            orignalColiOffset = controller.center;
+            orignalColiRadius = controller.radius;
             currentX = 0f;
             currentPositon = transform.localPosition;
         }
@@ -97,30 +107,58 @@ namespace HeroBrine {
         
         public void ApplyGraivity(){
             
-            velocity.y -= gravity * Time.deltaTime;
-
-            rb.AddForce(velocity * Time.deltaTime);
-            if(IsGrounded()){
-                velocity.y = 0f;
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+            if(IsGrounded() && velocity.y < 0f){
+                velocity.y = -2f;
             }
         }
 
         
         
         
-        public void Jump(){
-            if(IsGrounded()){
+        // public void JumpWithPhysics(){
+        //     if(IsGrounded()){
+        //         isJumping = true;
+        //         CancelInvoke(nameof(ResetJump));
+        //         Invoke(nameof(ResetJump),1f);
+        //         Debug.Log("Jump");
+        //         rb.velocity = Vector3.zero;
+        //         rb.AddForce(Vector3.up * jumpHeight,ForceMode.Impulse);
+        //         if(SlideRoutine != null){
+        //             StopCoroutine(SlideRoutine);
+        //         }
+        //     }
+        // }
+        public void JumpWithController(){
+            if(!isJumping){
                 isJumping = true;
+                Debug.Log("Jump");
                 CancelInvoke(nameof(ResetJump));
                 Invoke(nameof(ResetJump),1f);
-                Debug.Log("Jump");
-                rb.velocity = Vector3.zero;
-                rb.AddForce(Vector3.up * jumpHeight,ForceMode.Impulse);
+                // StartCoroutine(JumpEventRoutine());
+                if(IsGrounded()){
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                }
                 if(SlideRoutine != null){
                     StopCoroutine(SlideRoutine);
                 }
             }
         }
+        // private IEnumerator JumpEventRoutine(){
+        //     float timeInAir = 0.0f;
+
+        //     do{
+        //         float jumpForce = jumpFallOff.Evaluate(timeInAir);
+        //         controller.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
+        //         timeInAir += Time.deltaTime;
+        //         transform.position = new Vector3(transform.position.x,transform.position.y,0f);
+        //         yield return null;
+
+        //     } while (!IsGrounded() && controller.collisionFlags != CollisionFlags.Above);
+        //     isJumping = false;
+
+        // }
         private void ResetJump(){
             isJumping = false;
         }
@@ -131,9 +169,9 @@ namespace HeroBrine {
         
         public void Slide(){
             isSliding = true;
-            m_collider.center = newColliderCenterSlideOffset;
-            m_collider.height = newSlideColliderHeight;
-            m_collider.radius = newColliderRadius;
+            controller.center = newColliderCenterSlideOffset;
+            controller.height = newSlideColliderHeight;
+            controller.radius = newColliderRadius;
             if(SlideRoutine == null){
                 SlideRoutine = StartCoroutine(RestSlideRoutine());
             }else{
@@ -147,9 +185,9 @@ namespace HeroBrine {
         private IEnumerator RestSlideRoutine(){
             yield return new WaitForSeconds(maxSlideTime);
             isSliding = false;
-            m_collider.center = orignalColiOffset;
-            m_collider.height = orgignalColiHeight;
-            m_collider.radius = orignalColiRadius;
+            controller.center = orignalColiOffset;
+            controller.height = orgignalColiHeight;
+            controller.radius = orignalColiRadius;
         }
         public bool GetIsSliding(){
             return isSliding;

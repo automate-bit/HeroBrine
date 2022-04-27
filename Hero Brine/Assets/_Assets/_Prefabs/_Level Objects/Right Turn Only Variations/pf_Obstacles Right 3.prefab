@@ -2016,7 +2016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6257940817712934895}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 11.1, y: 0.7800001, z: 87.4}
+  m_LocalPosition: {x: 11.1, y: 0.7800001, z: 87.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2154244508671802191}
@@ -2159,9 +2159,11 @@ MonoBehaviour:
   lifeTime: 1000
   variationsType: 0
   levelTurn: {fileID: 3395828659756967790}
+  leveWidthSize: 11.6
+  offset: {x: 0, y: 1.53, z: 0}
   newObstacleSpawnPointArray:
   - {fileID: 374397250493576696}
-  playerSpawnPointRight: {fileID: 4691728671157704033}
+  playerSpawnPointRight: {fileID: 2658753820520558286}
   playerSpawnPointLeft: {fileID: 0}
   rand: 0
 --- !u!65 &8620785477698459287
