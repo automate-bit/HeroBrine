@@ -13,6 +13,7 @@ namespace HeroBrine {
         [Header("Ground Check")]
         // [SerializeField] private AnimationCurve jumpFallOff;
         // [SerializeField] private float jumpMultiplier;
+        [SerializeField] private float fallMultiplier = 20f;
         [SerializeField] private float gravity = -9.8f;
         [SerializeField] private float jumpHeight = 120f;
 
@@ -108,7 +109,7 @@ namespace HeroBrine {
         public void ApplyGraivity(){
             
             velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
+            controller.Move(velocity * fallMultiplier * Time.deltaTime);
             if(IsGrounded() && velocity.y < 0f){
                 velocity.y = -2f;
             }
