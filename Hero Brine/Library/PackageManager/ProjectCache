@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637866548938105056
-    m_Hash: 658616639
+      ticks: 637857080769140266
+    m_Hash: 3406733350
   m_LockFileStatus:
     m_FilePath: D:/Git Repositry/HeroBrine/Hero Brine/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637866548939977929
-    m_Hash: 1430509120
+      ticks: 637857080769692291
+    m_Hash: 2808982662
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -815,12 +815,12 @@ m_PackageAssets:
         url: https://github.com/Unity-Technologies/InputSystem.git
         revision: 76d3fd182183dff9e9793431de614fd1e69e363c
         path: 
-    - packageId: com.unity.probuilder@5.0.4
+    - packageId: com.unity.probuilder@5.0.3
       testable: 0
       isDirectDependency: 1
-      version: 5.0.4
+      version: 5.0.3
       source: 1
-      resolvedPath: D:\Git Repositry\HeroBrine\Hero Brine\Library\PackageCache\com.unity.probuilder@5.0.4
+      resolvedPath: D:\Git Repositry\HeroBrine\Hero Brine\Library\PackageCache\com.unity.probuilder@5.0.3
       assetPath: Packages/com.unity.probuilder
       name: com.unity.probuilder
       displayName: ProBuilder
@@ -962,13 +962,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637798446010000000
+      datePublishedTicks: 637534907290000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.probuilder.git
-        revision: 22982e248cc358e0d09dddd839f6d84cf33a8cb6
+        url: git+https://github.com/Unity-Technologies/com.unity.probuilder.git
+        revision: 6a81f0485f2eed8c8a0c193422d52d55f64cd79c
         path: 
     - packageId: com.unity.render-pipelines.universal@10.8.1
       testable: 0
