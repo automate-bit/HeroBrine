@@ -58,6 +58,15 @@ namespace HeroBrine {
         private void Update(){
             mover.ApplyGraivity();
             if(enableInputs){
+                if(Input.GetKeyDown(KeyCode.UpArrow)){
+                    mover.JumpWithController();
+                }else if(Input.GetKeyDown(KeyCode.DownArrow)){
+                    mover.Slide();
+                }else if(Input.GetKeyDown(KeyCode.RightArrow)){
+                    SwipeRight();
+                }else if(Input.GetKeyDown(KeyCode.LeftArrow)){
+                    SwipeLeft();
+                }
                 Move();
                 mover.ChangeLane();
                 animationController.Slide(mover.GetIsSliding());
@@ -99,7 +108,7 @@ namespace HeroBrine {
                     if(currentHorizontalPositon == HorizontalPosition.Left){
                         
                         Turn90Left();
-                        OnPlayerTurn?.Invoke(this,EventArgs.Empty);
+                        InvokeOnTurn();
                     }
                 }
 
@@ -111,6 +120,9 @@ namespace HeroBrine {
                 currentHorizontalPositon = HorizontalPosition.Left;
             }
 
+        }
+        private void InvokeOnTurn(){
+            OnPlayerTurn?.Invoke(this,EventArgs.Empty);
         }
         
         public void CheckBump(){
@@ -147,7 +159,7 @@ namespace HeroBrine {
 
                     if(currentHorizontalPositon == HorizontalPosition.Right){
                         Turn90Right();
-                        OnPlayerTurn?.Invoke(this,EventArgs.Empty);
+                        InvokeOnTurn();
                     }
                 }
 

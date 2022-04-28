@@ -22,12 +22,16 @@ namespace HeroBrine {
         private void Start(){
             previouslySpawnedVariationsList = new List<LevelVariations>();
             playerController.OnPlayerTurn += (object sender,System.EventArgs e) => {
-                for (int i = 0; i < previouslySpawnedVariationsList.Count -1; i++){
-                    previouslySpawnedVariationsList[i].DestroyWithOutDelay();
-                }
-                previouslySpawnedVariationsList = new List<LevelVariations>();
-                SpawnNumberOfStraightRoad(5);
+                startingPoint.gameObject.SetActive(false);
+                // Invoke(nameof(DesableLastTurn),2f);
+                // for (int i = 0; i < previouslySpawnedVariationsList.Count - 1; i++){
+                //     previouslySpawnedVariationsList[i].DestroyWithOutDelay();
+                // }
+                // previouslySpawnedVariationsList = new List<LevelVariations>();
+                int randAmountOfLevel = UnityEngine.Random.Range(5,30);
+                SpawnNumberOfStraightRoad(randAmountOfLevel);
             };
+
             Invoke(nameof(SpawnInitialSegment),0.1f);
         }
         public void SpawnInitialSegment(){
@@ -79,7 +83,6 @@ namespace HeroBrine {
             if(newVariations != null){
                 if(!previouslySpawnedVariationsList.Contains(level)){
                     previouslySpawnedVariationsList.Add(level);
-
                 }
             }
         }
