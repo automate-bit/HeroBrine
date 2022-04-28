@@ -1,7 +1,0 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines'
-Cmd: initializeCompiler
-
-Cmd: compileComputeKernel
-  insize=1893 file=G:/Unity Games Projects/Git Repos/HeroBrine/Hero Brine/Library/PackageCache/com.unity.cinemachine@2.8.4/Editor/EditorResources/CMWaveform.compute kernel=KCMWaveformClear cachingPP=1 ppOnly=0 stripLineD=0 buildPlatform=13 km=<UNITY_VERSION=202039> pKW=UNITY_NO_DXT5nm UNITY_NO_RGBM UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_MOBILE UNITY_LIGHTMAP_DLDR_ENCODING uKW=SHADER_STAGE_COMPUTE platform=vulkan flags=268439552 ok=1 outsize=2755
-
-Cmd: shutdown
